@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using UserService.Models;
+
 public class Program
 {
     public static void Main(string[] args)
@@ -21,6 +24,9 @@ public class Program
 
 
         builder.Services.AddHttpClient();
+
+        builder.Services.AddDbContext<UserServiceContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("")));
         
 
         var app = builder.Build();
